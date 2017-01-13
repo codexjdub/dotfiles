@@ -41,7 +41,7 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-right = volume mpd wired-network cpu memory updates filesystem wlan pkgupdates battery date menu0
+modules-right = pkgupdates volume mpd wired-network cpu memory updates filesystem wlan battery date
 modules-center = 
 modules-left = i3 xwindow
 
@@ -54,7 +54,7 @@ underline-size = 0
 underline-color = ${colors.white}
 
 font-2 = PowerlineFont:size=10;0
-font-0 = terminus:size=10;0
+font-0 = xos4 Terminus:size=10;0
 font-1 = Roboto:size=10;0
 font-3 = FontAwesome:size=8;0
 
@@ -69,7 +69,6 @@ format-background = ${colors.black}
 format-foreground = ${colors.white}
 label = ---> %title%
 label-maxlen = 70
-
 
 ;[module/filesystem]
 ;type = internal/fs
@@ -152,11 +151,12 @@ label-visible = %name%
 label-visible-foreground = ${colors.white}
 label-visible-padding = 1
 
+
 [module/pkgupdates]
 type = custom/script
 exec = checkupdates | wc -l
-tail = false
-label = PKG:%output% |
+tail = true
+label = pkg: %output%
 interval = 7200
 
 
@@ -260,7 +260,7 @@ format-disconnected-underline = ${colors.gray}
 accumulate-stats = true
 
 ;label-connected = %essid% %signal% | %local_ip% | D:%downspeed% U:%upspeed% |
-label-connected = %local_ip% | D:%downspeed% U:%upspeed% |
+label-connected = <%local_ip%> D:%downspeed% U:%upspeed%
 label-disconnected = 
 label-disconnected-foreground = ${colors.gray}
 
@@ -283,7 +283,7 @@ label-disconnected-foreground = ${colors.gray}
 
 [module/date]
 type = internal/date
-date =  %b %d %Y %a %l:%M %p
+date =  %b %d %a %l:%M %p
 interval = 15
 ;format-underline = ${colors.white}
 ;format-background = ${colors.black}
@@ -293,8 +293,10 @@ format-padding = 0
 
 [module/volume]
 type = internal/volume
+mapping = true
 
 format-volume = <bar-volume> 
+;format-volume = V: <label-volume>
 
 label-volume = %percentage%
 label-volume-foreground = ${root.foreground}
@@ -302,7 +304,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = muted
 label-muted-foreground = ${colors.gray}
 
-bar-volume-width = 10
+bar-volume-width = 7
 bar-volume-foreground-0 = ${colors.green}
 bar-volume-foreground-1 = ${colors.green}
 bar-volume-foreground-2 = ${colors.green}
@@ -337,7 +339,8 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.yellow}
 format-discharging-padding = 1
 
-format-full =   <label-full>  |
+;format-full =   <label-full>  |
+format-full = <label-full>
 format-full-underline = ${self.format-charging-underline}
 format-full-overline = ${self.format-charging-underline}
 format-full-padding = 0
@@ -391,14 +394,8 @@ menu-0-1 =  restart
 menu-0-1-exec = shutdown -r now
 menu-0-2 =   cancel
 
-
 label-open =   
 label-close =
-
-[module/updates]
-type = custom/script
-
-exec = echo 
 
 
 ;[module/powermenu]
@@ -426,4 +423,4 @@ exec = echo
 ;menu-2-1 = cancel
 ;menu-2-1-exec = menu-open-0
 
-; vim:ft=dosini
+;vim:ft=dosini

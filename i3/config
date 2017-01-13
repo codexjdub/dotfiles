@@ -134,7 +134,7 @@ assign [class="Chromium"] $workspace3
 bindsym $mod+shift+x exec i3lock --color "$black"
 
 exec --no-startup-id xrandr --output LVDS1 --off
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec i3-sensible-terminal
 #exec i3-sensible-terminal
 #exec chromium
