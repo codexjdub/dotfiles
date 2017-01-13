@@ -134,7 +134,7 @@ assign [class="Chromium"] $workspace3
 bindsym $mod+shift+x exec i3lock --color "$black"
 
 exec --no-startup-id xrandr --output LVDS1 --off
-#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec i3-sensible-terminal
 #exec i3-sensible-terminal
 #exec chromium
@@ -188,7 +188,7 @@ bar {
         position top
         mode invisible
 
-        status_command polybar myBar -c /home/jason/.config/i3/polybar/config
+        status_command polybar floatBar -c /home/jason/.config/i3/polybar/config
 }
 
 set $darkred     #660d21
@@ -202,6 +202,7 @@ set $darkblue    #458588
 set $blue        #83a598
 set $darkmagenta #b16286
 set $magenta     #d3869b
+set $purple      #5d2ca5
 set $darkcyan    #689d6a
 set $cyan        #8ec07c
 set $darkpurple  #752f8c
@@ -214,7 +215,7 @@ set $blackblack  #000000
 set $whitewhite  #ffffff
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $deepgreen  $deepgreen  $whitewhite $darkblack  $red
+client.focused          $deepgreen  $deepgreen  $whitewhite $darkblack  $purple
 client.unfocused        $black      $black      $white      $darkblack  $darkblack
 client.focused_inactive $black      $black      $white      $darkblack  $darkblack
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
@@ -246,8 +247,8 @@ mode "num" {
 bindsym Num_Lock mode "num"
 
 # Gaps around windows
-#g aps inner 30
-# gaps outer 20
+gaps inner 30
+gaps outer 20
 
 # Window border (somehow need this to avoid wallpaper being cut off)
-for_window [class = "^.*"] border pixel 0
+for_window [class = "^.*"] border pixel 3

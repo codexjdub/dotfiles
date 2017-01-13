@@ -16,7 +16,7 @@ yellow = #c7ae95
 green = #aec795
 
 
-[bar/myBar]
+[bar/fullBar]
 ;Non-floating bar
 width = 100%
 override-redirect = false
@@ -41,7 +41,7 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-right = pkgupdates volume mpd wired-network cpu memory updates filesystem wlan battery date
+modules-right = volume mpd wired-network cpu memory updates filesystem wlan pkgupdates battery date
 modules-center = 
 modules-left = i3 xwindow
 
@@ -54,7 +54,80 @@ underline-size = 0
 underline-color = ${colors.white}
 
 font-2 = PowerlineFont:size=10;0
-font-0 = xos4 Terminus:size=10;0
+font-0 = xos4 Terminus:size=12;0
+font-1 = Roboto:size=10;0
+font-3 = FontAwesome:size=8;0
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[bar/miniBar]
+width = 100%
+override-redirect = false
+height = 26
+offset-x = 0
+offset-y = 0
+
+enable-ipc = true
+
+module-margin-right = 1
+
+modules-right = wired-network cpu memory updates battery date
+modules-center = 
+modules-left = i3 xwindow
+
+background = ${colors.black}
+foreground = ${colors.white}
+
+overline-size = 0
+overline-color =${colors.white}
+underline-size = 0
+underline-color = ${colors.white}
+
+font-2 = PowerlineFont:size=10;0
+font-0 = xos4 Terminus:size=12;0
+font-1 = Roboto:size=10;0
+font-3 = FontAwesome:size=8;0
+
+
+[bar/floatBar]
+;width = 100%
+;override-redirect = false
+;height = 26
+;offset-x = 0
+;offset-y = 0
+
+
+; Floating bar
+width = 80%
+;allow bar to float
+override-redirect = true
+height = 26
+offset-x = 10%
+offset-y = 10
+
+enable-ipc = true
+
+padding-left = 0
+padding-right = 0
+
+module-margin-right = 1
+module-margin-left = 0
+
+modules-right = volume mpd wired-network cpu memory updates filesystem wlan pkgupdates battery date
+modules-center = 
+modules-left = i3 xwindow
+
+background = ${colors.black}
+foreground = ${colors.white}
+
+overline-size = 0
+overline-color =${colors.white}
+underline-size = 0
+underline-color = ${colors.white}
+
+font-2 = PowerlineFont:size=10;0
+font-0 = xos4 Terminus:size=12;0
 font-1 = Roboto:size=10;0
 font-3 = FontAwesome:size=8;0
 
@@ -155,8 +228,8 @@ label-visible-padding = 1
 [module/pkgupdates]
 type = custom/script
 exec = checkupdates | wc -l
-tail = true
-label = pkg: %output%
+tail = false
+label = PKG:%output%
 interval = 7200
 
 
@@ -247,7 +320,7 @@ label-foreground = ${colors.white}
 [module/wlan]
 type = internal/network
 interface = wlp1s0
-interval = 3.0
+interval = 2.0
 format-background = ${colors.gray}
 
 format-connected-padding = 0
@@ -259,8 +332,8 @@ format-disconnected-underline = ${colors.gray}
 
 accumulate-stats = true
 
-;label-connected = %essid% %signal% | %local_ip% | D:%downspeed% U:%upspeed% |
-label-connected = <%local_ip%> D:%downspeed% U:%upspeed%
+label-connected = %essid% %signal% |%local_ip%| D:%downspeed% U:%upspeed%
+;label-connected = <%local_ip%> D:%downspeed% U:%upspeed%
 label-disconnected = 
 label-disconnected-foreground = ${colors.gray}
 
@@ -283,12 +356,12 @@ label-disconnected-foreground = ${colors.gray}
 
 [module/date]
 type = internal/date
-date =  %b %d %a %l:%M %p
+date =  %b %d %a %l:%M %p 
 interval = 15
 ;format-underline = ${colors.white}
 ;format-background = ${colors.black}
 ;format-foreground = ${colors.white}
-format-padding = 0
+format-padding = 1
 
 
 [module/volume]
@@ -304,7 +377,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = muted
 label-muted-foreground = ${colors.gray}
 
-bar-volume-width = 7
+bar-volume-width = 6
 bar-volume-foreground-0 = ${colors.green}
 bar-volume-foreground-1 = ${colors.green}
 bar-volume-foreground-2 = ${colors.green}
