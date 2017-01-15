@@ -12,8 +12,12 @@ black = #090909
 red = #c795ae
 brightred = #c62a1b
 blue = #95aec7
+darkblue = #2a4cba
 yellow = #c7ae95
 green = #aec795
+darkgreen = #1c7a4e
+;#269963
+
 
 
 [bar/fullBar]
@@ -24,15 +28,6 @@ height = 26
 offset-x = 0
 offset-y = 0
 
-
-;; Floating bar
-;width = 80%
-;;allow bar to float
-;override-redirect = true
-;height = 26
-;offset-x = 10%
-;offset-y = 10
-
 enable-ipc = true
 
 ;padding-left = 0
@@ -41,7 +36,7 @@ enable-ipc = true
 module-margin-right = 1
 ;module-margin-left = 0
 
-modules-right = volume mpd wired-network cpu memory updates filesystem wlan pkgupdates battery date
+modules-right = wlan mpd wired-network cpu memory updates filesystem pkgupdates battery date volume
 modules-center = 
 modules-left = i3 xwindow
 
@@ -54,9 +49,9 @@ underline-size = 0
 underline-color = ${colors.white}
 
 font-2 = PowerlineFont:size=10;0
-font-0 = xos4 Terminus:size=12;0
+font-0 = xos4 Terminus:size=10;0
 font-1 = Roboto:size=10;0
-font-3 = FontAwesome:size=8;0
+font-3 = FontAwesome:size=10;0
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -85,9 +80,9 @@ underline-size = 0
 underline-color = ${colors.white}
 
 font-2 = PowerlineFont:size=10;0
-font-0 = xos4 Terminus:size=12;0
+font-0 = xos4 Terminus:size=10;0
 font-1 = Roboto:size=10;0
-font-3 = FontAwesome:size=8;0
+font-3 = FontAwesome:size=10;0
 
 
 [bar/floatBar]
@@ -114,7 +109,7 @@ padding-right = 0
 module-margin-right = 1
 module-margin-left = 0
 
-modules-right = volume mpd wired-network cpu memory updates filesystem wlan pkgupdates battery date
+modules-right = volume mpd wired-network cpu memory updates filesystem wlan battery date
 modules-center = 
 modules-left = i3 xwindow
 
@@ -127,9 +122,9 @@ underline-size = 0
 underline-color = ${colors.white}
 
 font-2 = PowerlineFont:size=10;0
-font-0 = xos4 Terminus:size=12;0
+font-0 = xos4 Terminus:size=10;0
 font-1 = Roboto:size=10;0
-font-3 = FontAwesome:size=8;0
+font-3 = FontAwesome:size=10;0
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -138,10 +133,10 @@ scroll-down = i3wm-wsprev
 
 [module/xwindow]
 type = internal/xwindow
-format-background = ${colors.black}
+format-background = ${colors.darkgreen}
 format-foreground = ${colors.white}
-label = ---> %title%
-label-maxlen = 70
+label = ----> %title%
+label-maxlen = 200
 
 ;[module/filesystem]
 ;type = internal/fs
@@ -196,12 +191,13 @@ label-visible-font = 4
 ws-icon-0 = 1; 
 ws-icon-1 = 2;
 ws-icon-2 = 3;
+ws-icon-3 = 4;X
 ws-icon-default =
 
 label-focused = %name%
 ;label-focused = 
 ;label-focused = %index%
-label-focused-background = ${colors.gray}
+label-focused-background = ${colors.darkgreen}
 label-focused-padding = 1
 
 label-unfocused = %name%
@@ -313,7 +309,7 @@ type = internal/memory
 interval = 3
 
 #label = %{F${colors.white} MEM %percentage_used% %{F-}
-label =MEM %percentage_used%
+label =MEM %percentage_used%%
 label-underline = ${colors.white}
 label-foreground = ${colors.white}
 
@@ -332,7 +328,7 @@ format-disconnected-underline = ${colors.gray}
 
 accumulate-stats = true
 
-label-connected = %essid% %signal% |%local_ip%| D:%downspeed% U:%upspeed%
+label-connected = %essid% %signal%% |%local_ip%| D:%downspeed% U:%upspeed%
 ;label-connected = <%local_ip%> D:%downspeed% U:%upspeed%
 label-disconnected = 
 label-disconnected-foreground = ${colors.gray}
