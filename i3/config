@@ -252,3 +252,6 @@ gaps outer 0
 
 # Window border (somehow need this to avoid wallpaper being cut off)
 for_window [class = "^.*"] border pixel 4
+
+# Remap Caps Lock key to Escape key
+exec setxkbmap -option caps:escape
