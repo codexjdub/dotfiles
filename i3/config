@@ -215,7 +215,7 @@ set $blackblack  #000000
 set $whitewhite  #ffffff
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $deepgreen  $deepgreen  $whitewhite $darkblack  $darkgreen
+client.focused          $darkgreen  $darkgreen  $whitewhite $darkgreen  $darkgreen
 client.unfocused        $black      $black      $white      $darkblack  $darkblack
 client.focused_inactive $black      $black      $white      $darkblack  $darkblack
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
