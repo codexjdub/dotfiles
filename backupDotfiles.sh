@@ -7,11 +7,12 @@ echo "~/.tmux.conf"
 echo "~/.Xresources"
 echo "~/.zshrc"
 echo "~/.config/i3"
+echo "~/.vim"
 echo ""
 echo "to ~/dotfiles"
 echo ""
 echo "RSYNC OUTPUT:"
 echo ""
 
-rsync -aAXv ~/.bashrc ~/.vimrc ~/.tmux.conf ~/.Xresources ~/.zshrc ~/.config/i3 ~/codes/dotfiles
+rsync -aAXv ~/.bashrc ~/.vimrc ~/.tmux.conf ~/.Xresources ~/.zshrc ~/.vim ~/.config/i3 ~/codes/dotfiles
 
